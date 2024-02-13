@@ -58,6 +58,41 @@ $questions = @(
     [Question]::new(9, 'code', 'What is the character length of the Issuer''s distinguished name who Issued the certificate for "C:\Windows\notepad.exe"? ', { $(Get-AuthenticodeSignature C:\windows\notepad.exe).SignerCertificate.Issuer.trim().Length }, '', "Did you look within the SignerCertificate?")
     [Question]::new(10, 'code', 'What is the path name (commandline) of the service with the display name of Windows Update?', { Get-WmiObject win32_service | Where-Object{$_.name -eq "wuauserv"} | Select-Object -ExpandProperty PathName }, '', "WMI is the real deal")
     [Question]::new(11, 'code', 'What is the creation date of the process lsass.exe? Format: YYYYMMDDHHmmSS.sss ', { $date = Get-WmiObject win32_process | Where-Object {$_.name -eq "lsass.exe"} | Select-Object -ExpandProperty CreationDate | out-string; $dotPosition = $date.IndexOf('.'); return $date.Substring(0,$dotPosition+ 4)}, '', "WMI is the real deal. Here is an example for an answer '20240131102618.284'")
+    [Question]::new(12, 'default', 'Copy and paste this hashtable to your own terminal, find the hidden message:
+    $hashtable = @{
+    "g7S" = "G"
+    "t7H" = "e"
+    "m5M" = "l"
+    "v3F" = "o"
+    "e1U" = "T"
+    "i6Q" = "u"
+    "q4J" = "s"
+    "97Z" = "g"
+    "w5E" = "P"
+    "j3P" = "o"
+    "d2V" = "o"
+    "s6I" = "r"
+    "w8D" = "e"
+    "l9N" = "l"
+    "k2O" = "Y"
+    "*6c" = "g"
+    "p1K" = "h"
+    "h0R" = "r"
+    "f4T" = "o"
+    "c8W" = "L"
+    "b9X" = "a"
+    "a3Y" = "n"
+    "n8L" = "e"
+    "u0G" = "w"
+    "z1A" = "M"
+    "xwB" = "a"
+    "xtC" = "k"
+    "@1b" = "a"
+    "_4a" = "u"
+    "!5d" = "e"
+}
+', $null , 'MakePowershellYourGoToLanguage') # ($hashtable.GetEnumerator() | Sort-Object Name -Descending).Value -join ''
+[Question]::new(13, 'default', 'My name is Omri, and I love vowels. If you''d remove all other characters from this very question, you will get your answer!', $null, 'aeiOiaIoeoeIoueoeaoeaaeoieueioouieouae', "Either Regex or '-replace' would do the trick!") #-replace '[^aeiouAEIOU]', ''
 )
 
 function Start-TutorialGame {
@@ -66,7 +101,8 @@ function Start-TutorialGame {
 
       do {
         $currentQuestion = $questions[$currentIndex]
-        Write-Host $currentQuestion.prompt -foregroundColor Cyan
+        # TODO: run preliminary setup
+        Write-Host "Question #$($currentQuestion.id):`n$($currentQuestion.prompt)" -foregroundColor Cyan
         $userInput = Read-Host "Your answer (type 'skip' to skip/'hint' for hint)"
 
         if ($userInput -eq 'PowershellGod') {
@@ -75,7 +111,7 @@ function Start-TutorialGame {
             $InsecureString = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($bstr)
             if ($InsecureString -eq "shlomo")
             {
-                $num = Read-Host "How many questions do you want to reveal?"
+                $num = Read-Host "How many questions do you want to reveal? (ID of last question + 1)"
                 if ($num -eq "all")
                 {$num = $questions.Count}
                 for ($i =0;$i -lt $num; $i++) {
@@ -90,12 +126,17 @@ function Start-TutorialGame {
                             continue
                         }
                 }
-                Write-Host "Question $($q.id): $($q.prompt)`nAnswer  $($q.id): $($q.answer)" -ForegroundColor Green
+                    Write-Host "Question $($q.id): $($q.prompt)`nAnswer   $($q.id): $($q.answer)" -ForegroundColor Green
             }
-            break # Exit the loop after revealing all answers
+            # break # Exit the loop after revealing all answers
             }
-            
+            elseif ($InsecureString -eq "skipto")
+            {
+                [int] $currentindex = Read-Host "What is the question number you want to skip to?"
+            }
+ 
         }
+        
         elseif ($userInput -eq 'skip') {
             Write-Host "Question skipped." -ForegroundColor Yellow
             $answersStatus[$currentQuestion.id] = 'Skipped'
