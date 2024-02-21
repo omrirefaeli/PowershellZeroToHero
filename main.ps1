@@ -68,6 +68,38 @@ function Convert-FromBase64 {
 
 ### consts
 
+$sort_hashtable = '$hashtable = @{
+    "g7S" = "G"
+    "t7H" = "e"
+    "m5M" = "l"
+    "v3F" = "o"
+    "e1U" = "T"
+    "i6Q" = "u"
+    "q4J" = "s"
+    "97Z" = "g"
+    "w5E" = "P"
+    "j3P" = "o"
+    "_4a" = "u"
+    "d2V" = "o"
+    "s6I" = "r"
+    "w8D" = "e"
+    "l9N" = "l"
+    "k2O" = "Y"
+    "*6c" = "g"
+    "p1K" = "h"
+    "h0R" = "r"
+    "f4T" = "o"
+    "c8W" = "L"
+    "!5d" = "e"
+    "b9X" = "a"
+    "a3Y" = "n"
+    "n8L" = "e"
+    "u0G" = "w"
+    "z1A" = "M"
+    "xwB" = "a"
+    "xtC" = "k"
+    "@1b" = "a"
+}'
 
 $iis_logs = 'IP_Address Remote_Logname Remote_User Date Request Status_Code Response_Size Referrer User_Agent
 127.0.0.1 - - [10/Oct/2023:13:55:36 +0000] "GET /index.html HTTP/1.1" 200 532 "http://example.com/start.html" "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
@@ -128,8 +160,31 @@ $iis_logs = 'IP_Address Remote_Logname Remote_User Date Request Status_Code Resp
 127.0.0.1 - - [10/Oct/2023:13:56:09 +0000] "GET /articles/powershell-advantages HTTP/1.1" 200 1032 "http://example.com/articles.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36"
 127.0.0.1 - - [10/Oct/2023:13:56:10 +0000] "GET /download/powershell-script.ps1 HTTP/1.1" 303 480 "http://example.com/downloads.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36"
 '
-$iis_logs_base64 = Convert-ToBase64 $iis_logs
-$iis_logs_base64
+$reg_key = "HKCU:\Powershell0toH"
+$reg_keys = @{
+    "k1XeR2L" = "o3n4roo6o8ooX9oXZoY2oYoWoVoUToSoRoQoPoNoMoLoKoJoIoHoGoF1L3M5K7N" 
+    "Y2uT4oP" = "bC5DoFoHoJoLoNoP8ooqoToVoXoZoo1o3o5o7o9XbXdXfXhXjXlXnXpXrXtXvXxXzX1" 
+    "p3Lk9QW" = "oX2CoEo0oIoKoMoOoQoS6UoWoYo1o3o5o7oo9XobXdXfXhXjXlXnXp0rXotXvXxXzX2o" 
+    "ZxP5To2" = "XCoEoGoIoKoMoOoQoS6UooWoYo1o3o5o7o9XbX0XofXhX00lXnXpXrXtoXvXxXzX2o4R" 
+    "N6yU8Ik" = "oX2o4o6o8XaXcXeXgXiXk00XoXqXsXuXwXyX1X3X5X7X9YoZbYdYfYhYjYlYnYoYqYr" 
+    "W3R5T7Y" = "oX2o4o6o8XaXcXeXgXiXkXmXooXqXsXuXwXyX1X3X5X7X9YoZbYdYfYhYjYlYnYoYqYs" 
+    "o8P0L4K" = "X2X4Xot096X8YaYcYeoooooooooooY103Yo5Y7Y9ZaZcZeZoooomZoZqooZsZuZw" 
+    "Q1F3H5J" = "oXoZoYoWoVoUoToSoRoQoPoNoMoLoKoJoIoHoGoFooDoBo9o7o5o3o1XZXYXXWVUTSR" 
+    "L9K8J7H" = "GFEoCoAo8o6o4o2o0XZXVXUXSoXRXPXoooIXGXEXCoXAX9Xo7X5X3Xo1ZWYWUWTSWRV" 
+    "M1N2B3V" = "oXoZoYoWooVoUoToSoRoQoPoNoMoLoKoJoIoHoGoFoDoBo9o7o5o3o1XZXYXXWVUTSo" 
+    "C4X5C6V" = "BNAoMoQoSoUooWoYo1o3o5o7o9XbXdXfXhXjXlXnXpXrXotXvXxXozX1X3X5X7X9YaYcYe" 
+    "Z7X8C9V" = "oXoZoYoWoVoUoToSoRoQoPoNoMoLoKoJ00oHoGoFoDooBo9o7o5o3o1XZXYXXWVUTSR" 
+    "B5N4M3L" = "KJIH0oEoCoAo8o6o4o2o0oXZXVXUXSXRXPXNXLXKXIXGXEXCXAX9X7X5X3X1ZWYWUWT" 
+    "Q2W3E4R" = "TYXoVoToRoPoNoLoJoHoGoFoDoBoAo8o6o4o2o0X0XVXUXSXRXPXNXLXKXIXGXEXC" 
+    "T5Y6U7I" = "oXZXYWoVoUoToSoRoQoPoNoMoLoKoJoIoHoGoFoDooBoAo9X7X5X3X1ZoWYWUWTSWRVQ" 
+    "O9P0A4S" = "oXoZoYoWoVoUoToSoRo0oPoNoMoLoKoJoIoHooGoFoDoBo9o7o5o3o1XZoXoXWVUTSR" 
+    "D7F8G9H" = "oJIoHoGoFoDoBoAo8o6oo4o2o0XZXVXUXSXRXPXNXLXKXIXGXoEXCXAX9X7X5X3X1ZWX" 
+    "J1K2L3Z" = "oXoZoYoWoVoUoToSoRoQoPoNoMoLoKoJoIoHoGoFoDoBo9oo7o5o3o1XZXYXXWVUTSR" 
+    "X3C4V5B" = "oNoMoLoKoJoIoHoGo00DoBoAo8o6oo4o2o0XZXVXUoXSXRXPXNXLXKXI0GXEXCXooAX9X7" 
+    }
+
+### Questions
+
 $questions = @(
     [Question]::new(0, 'code', 'What is the version of the command "get-member"?', { $(get-command "get-member").Version.ToString() }, ""),
     [Question]::new(1, 'default', 'What is MemberType of the CommandType member in the Get-Command output?', $null, "Property"),
@@ -143,57 +198,29 @@ $questions = @(
     [Question]::new(9, 'code', 'What is the character length of the Issuer''s distinguished name who Issued the certificate for "C:\Windows\notepad.exe"? ', { $(Get-AuthenticodeSignature C:\windows\notepad.exe).SignerCertificate.Issuer.trim().Length }, '', "Did you look within the SignerCertificate?"),
     [Question]::new(10, 'code', 'What is the path name (commandline) of the service with the display name of Windows Update?', { Get-WmiObject win32_service | Where-Object{$_.name -eq "wuauserv"} | Select-Object -ExpandProperty PathName }, '', "WMI is the real deal"),
     [Question]::new(11, 'code', 'What is the creation date of the process lsass.exe? Format: YYYYMMDDHHmmSS.sss ', { $date = Get-WmiObject win32_process | Where-Object {$_.name -eq "lsass.exe"} | Select-Object -ExpandProperty CreationDate | out-string; $dotPosition = $date.IndexOf('.'); return $date.Substring(0,$dotPosition+ 4)}, '', "WMI is the real deal. Here is an example for an answer '20240131102618.284'"),
-    [Question]::new(12, 'default', 'Copy and paste this hashtable to your own terminal, find the hidden message:
-    $hashtable = @{
-    "g7S" = "G"
-    "t7H" = "e"
-    "m5M" = "l"
-    "v3F" = "o"
-    "e1U" = "T"
-    "i6Q" = "u"
-    "q4J" = "s"
-    "97Z" = "g"
-    "w5E" = "P"
-    "j3P" = "o"
-    "d2V" = "o"
-    "s6I" = "r"
-    "w8D" = "e"
-    "l9N" = "l"
-    "k2O" = "Y"
-    "*6c" = "g"
-    "p1K" = "h"
-    "h0R" = "r"
-    "f4T" = "o"
-    "c8W" = "L"
-    "b9X" = "a"
-    "a3Y" = "n"
-    "n8L" = "e"
-    "u0G" = "w"
-    "z1A" = "M"
-    "xwB" = "a"
-    "xtC" = "k"
-    "@1b" = "a"
-    "_4a" = "u"
-    "!5d" = "e"
-}
-', $null , 'MakePowershellYourGoToLanguage'), # ($hashtable.GetEnumerator() | Sort-Object Name -Descending).Value -join ''
+    [Question]::new(12, 'default', "Copy and paste this hashtable to your own terminal, find the hidden message:`n$sort_hashtable", $null , 'MakePowershellYourGoToLanguage'), # ($hashtable.GetEnumerator() | Sort-Object Name -Descending).Value -join ''
 [Question]::new(13, 'default', 'My name is Omri, and I love vowels. If you''d remove all other characters from this very question, you will get your answer!', $null, 'aeiOiaIoeoeIoueoeaoeaaeoieueioouieouae', "Either Regex or '-replace' would do the trick!"), #-replace '[^aeiouAEIOU]', ''
 [Question]::new(14, 'code', 'What is the alphabetically first property in your registry''s Run key (Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run)?', { $($(Get-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run).Property | Sort-Object)[0] }, '')
 [Question]::new(15, 'setup', 'Check out the IIS log file in C:\Users\Public\iis.log. Go over the logs and find the most common Status Code (use Foreach-Object and regex)', { if (-not (Test-Path "C:\Users\Public\iis.log")) {Out-File -FilePath "C:\Users\Public\iis.log" -Encoding utf8 -Force -InputObject $iis_logs} }, '303') 
 <#
-$codes = @()
+$codes = @() # It is super not efficient to use @() for adding elements to an array since arrays have fixed sizes, it's better to use dynamic objects. But it's just simple for this use case. Read more here - https://learn.microsoft.com/en-us/powershell/scripting/dev-cross-plat/performance/script-authoring-considerations?view=powershell-7.4#array-addition
 $niis_logs | %{ #after splitting by lines and removing first line
 $_ -match '".*?"\s{1,2}(\d+)\s' | Out-Null
 $codes += $Matches[1]
 }
 $($code | Group-Object | Sort-Object -Descending Count).Name[0]
 #>
+[Question]::new(16, 'setup', 'Look at the registry key ''HKEY_CURRENT_USER\Powershell0toH''. What is the property with the most ''o''s?', { if( -not (Test-Path ($reg_key))) {new-item  $reg_key; foreach ($key in $reg_keys.Keys){  New-ItemProperty -Path $reg_key -Name $key -Value $reg_keys[$key] -PropertyType String}} }, 'O9P0A4S')
 )
 
 function Cleanup
 {
     # Question15
     Remove-Item "C:\Users\Public\iis.log" -Force
+
+    # Question16
+    Remove-Item -Path $reg_key -Recurse -Force
+
 
 }
 
@@ -217,7 +244,7 @@ function Start-TutorialGame {
         }
 
         Write-Host "Question #$($currentQuestion.id):`n$($currentQuestion.prompt)" -foregroundColor Cyan
-        $userInput = Read-Host "Your answer (type 'skip' to skip/'hint' for hint)"
+        $userInput = Read-Host "Your answer (type 'skip' to skip/'hint' for a hint/'cleanup' to remove setup for all questions)"
 
         if ($userInput -eq 'PowershellGod') {
             $password = Read-Host -AsSecureString "What is the password" 
@@ -250,7 +277,10 @@ function Start-TutorialGame {
             }
  
         }
-        
+        elseif ($userInput -eq 'cleanup') {
+            Write-Host "Clean up on aisle 5, removing setup for all questions." -ForegroundColor Yellow
+            Cleanup
+        }
         elseif ($userInput -eq 'skip') {
             Write-Host "Question skipped." -ForegroundColor Yellow
             $answersStatus[$currentQuestion.id] = 'Skipped'
