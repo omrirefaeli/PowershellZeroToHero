@@ -68,6 +68,28 @@ function Convert-FromBase64 {
 
 ### consts
 
+$intro_text = '
+Hello! Welcome to the ''Powershell Zero to Hero'' game!
+The name is pretty indicative so without further ado, some instructions:
+
+1. The basic structure of a Powershell command resembles a CMD command structure of <Command> [-Parameters [Parameters'' Value]] [| <Another Command>]
+For instance - Get-Process -Name "chrome" | Stop-Process
+
+2. The goal of this game is to answer all the questions one by one. When you answer correctly, you advance to the next question. 
+
+3. From now on, you should prefer Powershell over CMD, old habits die hard but between us, you know it''s time. 
+If for some reason you would still prefer to use CMD commands in this exercise, mostly in the first questions, you might struggle more with more advanced questions as they rely on information learned from previous questions.
+
+4. As the game continues, try to keep a record of your answers for each question in case you accidentally exit the terminal.
+
+5. The questions are tailored to the system that runs the program. A good approach would be to create a Powershell ISE session on the same machine that runs this program, then press Ctrl+R to be able to run scripts and even debug quickly. You might need to set the Execution Policy to Bypass to be able to run scripts.
+
+6. In case you struggle with a question, especially the first ones, there are some hints to guide you. 
+If you are experiencing technical difficulties as a result that I tried to not spend too much time on creating this game then don''t waste your time and let me know.
+
+Hope you enjoy!
+'
+
 $sort_hashtable = '$hashtable = @{
     "g7S" = "G"
     "t7H" = "e"
@@ -187,7 +209,7 @@ $reg_keys = @{
 
 $questions = @(
     [Question]::new(0, 'code', 'What is the version of the command "get-member"?', { $(get-command "get-member").Version.ToString() }, ""),
-    [Question]::new(1, 'default', 'What is MemberType of the CommandType member in the Get-Command output?', $null, "Property"),
+    [Question]::new(1, 'default', 'What is ''MemberType'' of the ''CommandType'' member in the output of the command ''Get-Command Invoke-Expression''?', $null, "Property"),
     [Question]::new(2, 'default', 'What is the cmdlet behind the alias of the command "ls"', $null, 'get-childitem'),
     [Question]::new(3, 'code', 'How many aliases does Get-ChildItem has?', {$(Get-Alias -Definition Get-ChildItem).count}, ''),
     [Question]::new(4, 'code', 'What is the ModuleName of the command "get-member"', {get-command get-member | Select-Object -ExpandProperty ModuleName}, ''),
@@ -227,6 +249,8 @@ function Cleanup
 function Start-TutorialGame {
     $currentIndex = 0
     $answersStatus = @{}
+
+    Write-Host $intro_text -foregroundColor Cyan
 
       do {
         $currentQuestion = $questions[$currentIndex]
