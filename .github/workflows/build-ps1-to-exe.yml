@@ -1,0 +1,33 @@
+name: Compile PS1 to EXE
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout repository
+
+      - name: Setup PowerShell
+        uses: actions/setup-powershell@v1
+
+      - name: Set PowerShell Execution Policy
+        run: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
+
+      - name: Install PS2EXE
+        run: |
+          Install-Module -Name ps2exe -Scope CurrentUser -Force -SkipPublisherCheck
+
+      - name: Compile PowerShell Script to Executable
+        run: |
+          Invoke-PS2EXE .\main.ps1 .\FunWithPowershell.exe
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Compiled-Executable
+          path: .\FunWithPowershell.exe
