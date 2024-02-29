@@ -113,16 +113,17 @@ Hello! Welcome to the ''Powershell Zero to Hero'' game!
 The name is pretty indicative so without further ado, some instructions:
 
 1. The basic structure of a Powershell command resembles a CMD command structure of <Command> [-Parameters [Parameters'' Value]] [| <Another Command>]
-For instance - Get-Process -Name "chrome" | Stop-Process
+For instance: Get-Process -Name "chrome" | Stop-Process
 
 2. The goal of this game is to answer all the questions one by one. When you answer correctly, you advance to the next question. 
 
-3. From now on, you should prefer Powershell over CMD, old habits die hard but between us, you know it''s time. 
-If for some reason you would still prefer to use CMD commands in this exercise, mostly in the first questions, you might struggle more with more advanced questions as they rely on information learned from previous questions.
+3. From now on, you should probably prefer Powershell over CMD, old habits die hard but between us, you know it''s time. 
+If for some reason you would still prefer to use CMD commands in this exercise, mostly in the first questions, you might struggle more with more advanced questions as they rely on information learned in previous questions.
 
 4. As the game continues, try to keep a record of your answers for each question in case you accidentally exit the terminal.
 
 5. The questions are tailored to the system that runs the program. A good approach would be to create a Powershell ISE session on the same machine that runs this program, then press Ctrl+R to be able to run scripts and even debug quickly. You might need to set the Execution Policy to Bypass to be able to run scripts.
+There is no need to spin up a VM for this game, EXCEPT for the bonus question! You should NOT run the bonus question on your machine (don''t worry it will not happen automatically)
 
 6. In case you struggle with a question, especially the first ones, there are some hints to guide you. 
 If you are experiencing technical difficulties as a result that I tried to not spend too much time on creating this game then don''t waste your time and let me know.
@@ -470,7 +471,7 @@ $csv_path = "C:\Users\Public\FunWithPowershell.csv"
 ### Questions
 
 $questions = @(
-    [Question]::new(0, 'code', 'What is the version of the command "get-member"?', { $(get-command "get-member").Version.ToString() }, ""),
+    [Question]::new(0, 'code', 'What is the CommandType of the command "get-member"?', { $(get-command "get-member").CommandType.ToString() }, ""),
     [Question]::new(1, 'default', 'What is ''MemberType'' of the ''CommandType'' member in the output of the command ''Get-Command Invoke-Expression''?', $null, "Property"),
     [Question]::new(2, 'default', 'What is the cmdlet behind the alias of the command "ls"', $null, 'get-childitem'),
     [Question]::new(3, 'code', 'How many aliases does Get-ChildItem has?', {$(Get-Alias -Definition Get-ChildItem).count}, ''),
@@ -497,7 +498,18 @@ $($code | Group-Object | Sort-Object -Descending Count).Name[0]
 [Question]::new(16, 'setup', 'Look at the registry key ''HKEY_CURRENT_USER\Powershell0toH''. What is the property with the most ''o''s?', { if( -not (Test-Path ($reg_key))) {new-item  $reg_key; foreach ($key in $reg_keys.Keys){  New-ItemProperty -Path $reg_key -Name $key -Value $reg_keys[$key] -PropertyType String  | out-null}} }, 'O9P0A4S')
 [Question]::new(17, 'setup', 'Under the ''C:\Users\Public\Powershell0toH'' folder you''ll find some encoded texts. One of those texts has a pattern of ''#[omri]{3,7};???#''. For example, ''#iormmm;b5g#''. The answer is the file name that this secret text is part of.', { if( -not (Test-Path ($b64_dir_path))) {new-item -ItemType Directory $b64_dir_path; Foreach ($i in 0..27){$name = Get-RandomString -length 7 -charSet $charSet;do{$text = Get-RandomString -length 500 -charSet $charSet_full}while($text -match $b64_pattern);if ($i -eq 7){$name = $b64_file_name; $text = $b64_file_text};$text = Convert-ToBase64($text); Out-File -FilePath "$b64_dir_path\$name.txt" -Encoding utf8 -InputObject $text}} }, $b64_file_name, 'The base64 encoding format is UTF8 yea? Combination of Get-childitem + Foreach + get-content and ''-match''')
 [Question]::new(18, 'setup', "Look for the CSV file '$($csv_path)' - Compare the entries with Type A and Type B, and find the one 'Comment' that exists only in one of those types. Hint available", { if( -not (Test-Path ($csv_path))) {$csv | out-file -FilePath $csv_path -Encoding utf8}}, 'wypOjA8', "Use Compare-Object, but if you want to find the absolute values, you might want to keep the lists unique")
+<#
+ $Csv = Import-Csv -Path "tst.csv" -Encoding UTF8 
+ $a = $csv | ?{$_.Type -eq "A"}
+ $b = $csv | ?{$_.Type -eq "B"}
+ Compare-Object $($a  | select -ExpandProperty Comment | Sort-Object -Unique) $($b  | select -ExpandProperty Comment | Sort-Object -Unique)
+#>
 [Question]::new(19, 'default', 'In the same CSV, in the comments for the Type C entries, hides a very important message, encrypted by the most ''effective'' and the most ancient technique. What is the message? Hint available.', $null , 'ThisIsAVerylongTextThatINeedToFillUpButIfIAlreadyGotYourAttentionIWantToSayGoodJob!YouAreAlmostOver!ThereAreOnlyAFewQuestionsLeftAndYouGotIt!IHopeThatNowYouCanSafelySayThatYouFeelComfortableWritingCodeInPowerShellAndTheMostImportantThingisThatYouEnjoyed!ThisIsAVerylongTextThatINeedToFillUpButIfIAlreadyGotYourAttentionIWantToSayGoodJob!YouAreAlmostOver!ThereAreOnlyAFewQuestionsLeftAndYouGotIt!IHopeThatNowYouCanSafelySayThatYouFeelComfortableWritingCodeInPowerShellAndTheMost', 'The technique is the infamous Caesar Cipher (Rot13), concatonate the strings to find the full message.')
+<#
+$text = ""
+$csv | ?{$_.Type -eq 'C'} | %{$text += $_.Comment}
+Invoke-Rot13 -InputString $text
+#>
 [Question]::new(20, 'default', 'You are almost a Powershell legend! Download the code that runs this program using ''Invoke-WebRequest'' from ''https://raw.githubusercontent.com/omrirefaeli/PowershellZeroToHero/main/main.ps1''. I placed some weird splitted comments with a chronological order, what is their message? Don''t cheat!!', $null , 'SUhvcGVUaGF0WW91RGlkbnRCcmVha0FuZEp1c3RTdWJtaXR0ZWRUaGVWaXNpYmxlQW5zd2VyLklmWW91RGlkbnQsVGhlbkNvbmdyYXRzIVlvdVN1Y2Nlc3NmdWxseUZpbmlzaGVkVGhlR2FtZSFFbmNvZGVNZUluQjY0VG9BZHZhbmNlVG9UaGVCb251c1F1ZXN0aW9u')
 )
  #7 heVisibl
