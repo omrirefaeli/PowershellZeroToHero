@@ -13,7 +13,7 @@ jobs:
         name: Checkout repository
 
       - name: Set PowerShell Execution Policy
-        run: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
+        run: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned  -Force
 
       - name: Install PS2EXE
         run: |
@@ -21,6 +21,7 @@ jobs:
       - name: test
         run: |
           get-module -Name ps2exe
+          write-host "ps2exe installed"
 
       - name: Compile PowerShell Script to Executable
         run: |
