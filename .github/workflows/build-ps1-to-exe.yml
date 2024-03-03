@@ -18,6 +18,9 @@ jobs:
       - name: Install PS2EXE
         run: |
           Install-Module -Name ps2exe -Force -SkipPublisherCheck
+      - name: test
+        run: |
+          get-module -Name ps2exe
 
       - name: Compile PowerShell Script to Executable
         run: |
