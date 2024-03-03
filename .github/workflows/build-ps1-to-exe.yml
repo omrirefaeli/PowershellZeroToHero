@@ -7,20 +7,18 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         name: Checkout repository
 
-      - name: Set PowerShell Execution Policy
-        run: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned  -Force
-
       - name: Install PS2EXE
+        shell: pwsh
         run: |
           Install-Module -Name ps2exe -Force -SkipPublisherCheck
       - name: test
         run: |
-          get-module -Name ps2exe
+          get-module 
           write-host "ps2exe installed"
 
       - name: Compile PowerShell Script to Executable
