@@ -16,8 +16,10 @@ jobs:
         run: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned  -Force
 
       - name: Install PS2EXE
+        shell: powershell
         run: |
           Install-Module -Name ps2exe -Force -SkipPublisherCheck
+          get-module
       - name: test
         run: |
           get-module 
