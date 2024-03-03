@@ -33,6 +33,8 @@ jobs:
         run: |
           $exists = gh release view ${{ github.ref_name }} --json tagName -q .tagName
           Write-host $exists
+          Write-host $exists.GetType()
+          Write-host $exists -eq $null
           if ($null -ne $exists) {
             gh release delete ${{ github.ref_name }} -y
           }
