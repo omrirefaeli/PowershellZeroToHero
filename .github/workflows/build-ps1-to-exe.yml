@@ -32,6 +32,7 @@ jobs:
       - name: Delete existing release if it exists
         run: |
           $exists = gh release view ${{ github.ref_name }} --json tagName -q .tagName
+          Write-host $exists
           if ($null -ne $exists) {
             gh release delete ${{ github.ref_name }} -y
           }
