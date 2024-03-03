@@ -17,11 +17,11 @@ jobs:
 
       - name: Install PS2EXE
         run: |
-          Install-Module -Name ps2exe -Scope CurrentUser -Force -SkipPublisherCheck
+          Install-Module -Name ps2exe -Force -SkipPublisherCheck
 
       - name: Compile PowerShell Script to Executable
         run: |
-          Invoke-PS2EXE .\main.ps1 .\FunWithPowershell.exe
+          Invoke-PS2EXE .\main.ps1 .\FunWithPowershell.exe -title FunWithPowershell -copyright "Omri Refaeli" -description "Fun With Powershell"
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
