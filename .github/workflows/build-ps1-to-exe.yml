@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         name: Checkout repository
 
       - name: Set PowerShell Execution Policy
@@ -24,7 +24,7 @@ jobs:
           Invoke-PS2EXE .\main.ps1 .\FunWithPowershell.exe
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Compiled-Executable
           path: .\FunWithPowershell.exe
