@@ -477,7 +477,7 @@ write-host $r_key
 ### Questions
 
 $questions = @(
-    [Question]::new(0, 'code', "Demo Question:`nWhat is the Process ID of the lsass.exe process? ask for a hint to reveal how to get the answer", { $(Get-Process lsass).Id.ToString() }, "",'The answer is $(Get-Process lsass).Id.ToString()'),
+    [Question]::new(0, 'code', "Demo Question:`nWhat is the Process ID of the lsass.exe process? ask for a hint to reveal how to get the answer", { $(Get-Process lsass).Id.ToString() }, "",'The answer is `$(Get-Process lsass).Id.ToString()`'),
     [Question]::new(1, 'code', 'What is the CommandType of the command "Get-Member"?', { $(get-command "get-member").CommandType.ToString() }, "To get information about a command, use Get-Command"),
     [Question]::new(2, 'default', 'What is ''MemberType'' of the ''CommandType'' member in the output of the command ''Get-Command Invoke-Expression''?', $null, "Property", 'MemberType is visible with the Get-Member command'),
     [Question]::new(3, 'default', 'What is the cmdlet behind the alias of the command "ls"', $null, 'get-childitem'),
@@ -519,10 +519,10 @@ Invoke-Rot13 -InputString $text
 #>
 [Question]::new(21, 'default', 'You are almost a Powershell legend! Download the code that runs this program using ''Invoke-WebRequest'' from ''https://raw.githubusercontent.com/omrirefaeli/PowershellZeroToHero/main/main.ps1''. I placed some weird splitted comments with a chronological order, what is their message? Don''t cheat!!', $null , 'SUhvcGVUaGF0WW91RGlkbnRCcmVha0FuZEp1c3RTdWJtaXR0ZWRUaGVWaXNpYmxlQW5zd2VyLklmWW91RGlkbnQsVGhlbkNvbmdyYXRzIVlvdVN1Y2Nlc3NmdWxseUZpbmlzaGVkVGhlR2FtZSFFbmNvZGVNZUluQjY0VG9BZHZhbmNlVG9UaGVCb251c1F1ZXN0aW9ucw==')
 [Question]::new(22, 'default', "You did it! You are now proficient enough to deal with anything coming your way with Powershell!`nTo get a bit more extreme, I have some bonus questions for you.. Put on the Incident Responsder hat and try some DFIR challenges as attackers love Powershell! (now you see why)`n####### IMPORTANT #######`n!!!!!To Solve The Bonus Questions You Need To Switch To A Virtual Machine!!!!`nAND ESPECIALLY DO NOT PASTE ANY CODE TO YOUR TERMINAL IN A CORP LAPTOP`nIf anything happens now it's your fault.
-Go to 'https://gist.githubusercontent.com/omrirefaeli/d30ea5e9c505781361ea5fb3e6dc8b10/raw/9d6f72fd1bae6fc4a4501172c2f66f677fc4daf7/0_Encoded_Powershell_C2' to view a real world encoded powershell command that reach out to a C2 server. What is the C2 IP? The answer is Base64 encoded with Unicode (UTF-16LE) character set.", $null , 'MQA0ADkALgAyADgALgA4ADEALgAxADkA')
+Go to '' to view a real world encoded powershell command that reach out to a C2 server. What is the C2 IP? The answer is Base64 encoded with Unicode (UTF-16LE) character set.", $null , 'MQA0ADkALgAyADgALgA4ADEALgAxADkA')
 [Question]::new(23, 'default', "Again, some scary warnings.. `n####### IMPORTANT #######`n!!!!!To Solve The Bonus Questions You Need To Switch To A Virtual Machine!!!!`nAND ESPECIALLY DO NOT PASTE ANY CODE TO YOUR TERMINAL IN A CORP LAPTOP`nIf anything happens now it's your fault.
-Go to 'https://gist.githubusercontent.com/omrirefaeli/d30ea5e9c505781361ea5fb3e6dc8b10/raw/45e759596759dad182dd23a6b9f467cade3e65a3/1_Deobfuscation' to view a CTF obfuscated Powershell code. Deobfuscate to view the flag! The answer is Base64 encoded with Unicode (UTF-16LE) character set.", $null , 'ZgBsAGEAZwB7ADgAOQAyAGEAOAA5ADIAMQA1ADEANwBkAGMAZQBjAGYAOQAwADYAOAA1AGQANAA3ADgAYQBlAGQAZgA1AGUAMgB9AA==')
-# Answers and explanations to the bonus questions are in here https://gist.github.com/omrirefaeli/d30ea5e9c505781361ea5fb3e6dc8b10
+Go to '' to view a CTF obfuscated Powershell code. Deobfuscate to view the flag! The answer is Base64 encoded with Unicode (UTF-16LE) character set.", $null , 'ZgBsAGEAZwB7ADgAOQAyAGEAOAA5ADIAMQA1ADEANwBkAGMAZQBjAGYAOQAwADYAOAA1AGQANAA3ADgAYQBlAGQAZgA1AGUAMgB9AA==')
+# Answers and explanations to the bonus questions are in here 
 )
  #7 heVisibl
 function Cleanup
