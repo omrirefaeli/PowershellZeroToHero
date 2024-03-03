@@ -29,12 +29,13 @@ jobs:
           7z a funwithpowershell.zip .\FunWithPowershell.exe -pinfected
         shell: pwsh
 
-      - name: Delete existing release
+      - name: Delete existing release if it exists
         run: |
-          if (gh release view ${{ github.ref_name }} --json tagName -q .tagName)
-          then
+          $exists = gh release view ${{ github.ref_name }} --json tagName -q .tagName
+          if ($null -ne $exists) {
             gh release delete ${{ github.ref_name }} -y
-          fi
+          }
+        shell: pwsh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
