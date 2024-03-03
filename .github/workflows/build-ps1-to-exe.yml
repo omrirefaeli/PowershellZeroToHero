@@ -30,6 +30,13 @@ jobs:
           7z a funwithpowershell.zip .\FunWithPowershell.exe -pinfected
         shell: pwsh
 
+      - name: Delete existing release
+        run: |
+          # This uses GitHub CLI to delete a release
+          gh release delete ${{ github.ref_name }} -y
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1.1.4
