@@ -165,12 +165,12 @@ $sort_hashtable = '$hashtable = @{
 }'
 
 $iis_logs = 'IP_Address Remote_Logname Remote_User Date Request Status_Code Response_Size Referrer User_Agent
-127.0.0.1 - - [10/Oct/2023:13:55:36 +0000] "GET /index.html HTTP/1.1" 200 532 "http://example.com/start.html" "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
+127.0.0.1 - - [10/Oct/2023:13:55:36 +0000] "GET /index.html HTTP/1.1" 200 532 "http://example.com/start.html" "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko"
 127.0.0.1 - - [10/Oct/2023:13:55:37 +0000] "POST /form_submit.php HTTP/1.1" 404 182 "http://example.com/form.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"
 127.0.0.1 - - [10/Oct/2023:13:55:38 +0000] "GET /missing-page.html HTTP/1.1" 404 123 "http://example.com/missing.html" "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.78 Mobile Safari/537.36"
 127.0.0.1 - - [10/Oct/2023:13:55:39 +0000] "GET /products/list HTTP/1.1" 200 975 "http://example.com/products.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Safari/605.1.15"
-127.0.0.1 - - [10/Oct/2023:13:55:40 +0000] "PUT /api/user/12345 HTTP/1.1" 201 702 "http://example.com/api/documentation" "curl/7.64.1"
-127.0.0.1 - - [10/Oct/2023:13:55:41 +0000] "DELETE /api/post/67890 HTTP/1.1" 403 415 "http://example.com/api/documentation" "PostmanRuntime/7.26.8"
+127.0.0.1 - - [10/Oct/2023:13:55:40 +0000] "PUT /api/user/12345 HTTP/1.1" 201 702 "http://example.com/api/documentation" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
+127.0.0.1 - - [10/Oct/2023:13:55:41 +0000] "DELETE /api/post/67890 HTTP/1.1" 403 415 "http://example.com/api/documentation" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
 127.0.0.1 - - [10/Oct/2023:13:55:42 +0000] "GET /news/latest-news.html HTTP/1.1" 303 1578 "http://example.com/news.html" "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko"
 127.0.0.1 - - [10/Oct/2023:13:55:43 +0000] "GET /images/logo.png HTTP/1.1" 304 0 "http://example.com/index.html" "Mozilla/5.0 (iPhone; CPU iPhone OS 13_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.2 Mobile/15E148 Safari/604.1"
 127.0.0.1 - - [10/Oct/2023:13:55:44 +0000] "POST /contact/form HTTP/1.1" 302 0 "http://example.com/contact.html" "Mozilla/5.0 (iPad; CPU OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1"
@@ -181,19 +181,19 @@ $iis_logs = 'IP_Address Remote_Logname Remote_User Date Request Status_Code Resp
 127.0.0.1 - - [10/Oct/2023:13:55:49 +0000] "GET /about-us HTTP/1.1" 404 234 "http://example.com/about.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0"
 127.0.0.1 - - [10/Oct/2023:13:55:50 +0000] "GET /favicon.ico HTTP/1.1" 302 1430 "http://example.com" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36"
 127.0.0.1 - - [10/Oct/2023:13:55:51 +0000] "GET /profile/settings HTTP/1.1" 403 512 "http://example.com/profile.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
-127.0.0.1 - - [10/Oct/2023:13:55:52 +0000] "POST /api/login HTTP/1.1" 204 760 "http://example.com/api/documentation" "curl/7.68.0"
+127.0.0.1 - - [10/Oct/2023:13:55:52 +0000] "POST /api/login HTTP/1.1" 204 760 "http://example.com/api/documentation" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
 127.0.0.1 - - [10/Oct/2023:13:55:53 +0000] "GET /search?q=powershell HTTP/1.1" 303 1250 "http://example.com/search.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.1 Safari/605.1.15"
-127.0.0.1 - - [10/Oct/2023:13:55:54 +0000] "GET /api/data?filter=recent HTTP/1.1" 500 642 "http://example.com/api/documentation" "PostmanRuntime/7.26.10"
+127.0.0.1 - - [10/Oct/2023:13:55:54 +0000] "GET /api/data?filter=recent HTTP/1.1" 500 642 "http://example.com/api/documentation" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
 127.0.0.1 - - [10/Oct/2023:13:55:55 +0000] "GET /blog/2023/powershell-tips HTTP/1.1" 200 1875 "http://example.com/blog.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36"
-127.0.0.1 - - [10/Oct/2023:13:55:56 +0000] "POST /webhook/receive HTTP/1.1" 202 340 "http://example.com/webhooks.html" "curl/7.68.0"
+127.0.0.1 - - [10/Oct/2023:13:55:56 +0000] "POST /webhook/receive HTTP/1.1" 202 340 "http://example.com/webhooks.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
 127.0.0.1 - - [10/Oct/2023:13:55:57 +0000] "GET /events HTTP/1.1" 418 1283 "http://example.com/events.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36"
 127.0.0.1 - - [10/Oct/2023:13:55:58 +0000] "GET /privacy-policy HTTP/1.1" 301 0 "http://example.com/privacy.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.193 Safari/537.36"
 127.0.0.1 - - [10/Oct/2023:13:55:59 +0000] "GET /terms-and-conditions HTTP/1.1" 200 1548 "http://example.com/terms.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
-127.0.0.1 - - [10/Oct/2023:13:56:00 +0000] "GET /sitemap.xml HTTP/1.1" 201 958 "http://example.com/robots.txt" "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
-127.0.0.1 - - [10/Oct/2023:13:56:01 +0000] "POST /api/items/new HTTP/1.1" 302 200 "http://example.com/api/guide" "curl/7.68.0"
-127.0.0.1 - - [10/Oct/2023:13:56:02 +0000] "GET /api/items/12345 HTTP/1.1" 404 98 "http://example.com/api/items" "PostmanRuntime/7.26.5"
-127.0.0.1 - - [10/Oct/2023:13:56:03 +0000] "PUT /api/items/12345/update HTTP/1.1" 204 0 "http://example.com/api/items" "curl/7.68.0"
-127.0.0.1 - - [10/Oct/2023:13:56:04 +0000] "DELETE /api/items/12345 HTTP/1.1" 403 178 "http://example.com/api/items" "curl/7.68.0"
+127.0.0.1 - - [10/Oct/2023:13:56:00 +0000] "GET /sitemap.xml HTTP/1.1" 201 958 "http://example.com/robots.txt" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
+127.0.0.1 - - [10/Oct/2023:13:56:01 +0000] "POST /api/items/new HTTP/1.1" 302 200 "http://example.com/api/guide" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
+127.0.0.1 - - [10/Oct/2023:13:56:02 +0000] "GET /api/items/12345 HTTP/1.1" 404 98 "http://example.com/api/items" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
+127.0.0.1 - - [10/Oct/2023:13:56:03 +0000] "PUT /api/items/12345/update HTTP/1.1" 204 0 "http://example.com/api/items" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
+127.0.0.1 - - [10/Oct/2023:13:56:04 +0000] "DELETE /api/items/12345 HTTP/1.1" 403 178 "http://example.com/api/items" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
 127.0.0.1 - - [10/Oct/2023:13:56:05 +0000] "GET /archive/2023/ HTTP/1.1" 304 3420 "http://example.com/archive.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36"
 127.0.0.1 - - [10/Oct/2023:13:56:06 +0000] "GET /help/faq HTTP/1.1" 303 2160 "http://example.com/help.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36"
 127.0.0.1 - - [10/Oct/2023:13:56:07 +0000] "GET /assets/img/header.jpg HTTP/1.1" 304 0 "http://example.com/index.html" "Mozilla/5.0 (iPhone; CPU iPhone OS 13_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.2 Mobile/15E148 Safari/604.1"
@@ -203,19 +203,19 @@ $iis_logs = 'IP_Address Remote_Logname Remote_User Date Request Status_Code Resp
 127.0.0.1 - - [10/Oct/2023:13:55:49 +0000] "GET /about-us HTTP/1.1" 404 234 "http://example.com/about.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0"
 127.0.0.1 - - [10/Oct/2023:13:55:50 +0000] "GET /favicon.ico HTTP/1.1" 200 1430 "http://example.com" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36"
 127.0.0.1 - - [10/Oct/2023:13:55:51 +0000] "GET /profile/settings HTTP/1.1" 403 512 "http://example.com/profile.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
-127.0.0.1 - - [10/Oct/2023:13:55:52 +0000] "POST /api/login HTTP/1.1" 304 760 "http://example.com/api/documentation" "curl/7.68.0"
+127.0.0.1 - - [10/Oct/2023:13:55:52 +0000] "POST /api/login HTTP/1.1" 304 760 "http://example.com/api/documentation" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
 127.0.0.1 - - [10/Oct/2023:13:55:53 +0000] "GET /search?q=powershell HTTP/1.1" 200 1250 "http://example.com/search.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.1 Safari/605.1.15"
-127.0.0.1 - - [10/Oct/2023:13:55:54 +0000] "GET /api/data?filter=recent HTTP/1.1" 500 642 "http://example.com/api/documentation" "PostmanRuntime/7.26.10"
+127.0.0.1 - - [10/Oct/2023:13:55:54 +0000] "GET /api/data?filter=recent HTTP/1.1" 500 642 "http://example.com/api/documentation" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
 127.0.0.1 - - [10/Oct/2023:13:55:55 +0000] "GET /blog/2023/powershell-tips HTTP/1.1" 303 200 "http://example.com/blog.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36"
-127.0.0.1 - - [10/Oct/2023:13:55:56 +0000] "POST /webhook/receive HTTP/1.1" 202 340 "http://example.com/webhooks.html" "curl/7.68.0"
+127.0.0.1 - - [10/Oct/2023:13:55:56 +0000] "POST /webhook/receive HTTP/1.1" 202 340 "http://example.com/webhooks.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
 127.0.0.1 - - [10/Oct/2023:13:55:57 +0000] "GET /events HTTP/1.1" 418 1283 "http://example.com/events.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36"
 127.0.0.1 - - [10/Oct/2023:13:55:58 +0000] "GET /privacy-policy HTTP/1.1" 301 0 "http://example.com/privacy.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.193 Safari/537.36"
 127.0.0.1 - - [10/Oct/2023:13:55:59 +0000] "GET /terms-and-conditions HTTP/1.1" 303 200 "http://example.com/terms.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
-127.0.0.1 - - [10/Oct/2023:13:56:00 +0000] "GET /sitemap.xml HTTP/1.1" 404 958 "http://example.com/robots.txt" "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
-127.0.0.1 - - [10/Oct/2023:13:56:01 +0000] "POST /api/items/new HTTP/1.1" 302 174 "http://example.com/api/guide" "curl/7.68.0"
-127.0.0.1 - - [10/Oct/2023:13:56:02 +0000] "GET /api/items/12345 HTTP/1.1" 404 98 "http://example.com/api/items" "PostmanRuntime/7.26.5"
-127.0.0.1 - - [10/Oct/2023:13:56:03 +0000] "PUT /api/items/12345/update HTTP/1.1" 204 0 "http://example.com/api/items" "curl/7.68.0"
-127.0.0.1 - - [10/Oct/2023:13:56:04 +0000] "DELETE /api/items/12345 HTTP/1.1" 500 178 "http://example.com/api/items" "curl/7.68.0"
+127.0.0.1 - - [10/Oct/2023:13:56:00 +0000] "GET /sitemap.xml HTTP/1.1" 404 958 "http://example.com/robots.txt" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
+127.0.0.1 - - [10/Oct/2023:13:56:01 +0000] "POST /api/items/new HTTP/1.1" 302 174 "http://example.com/api/guide" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
+127.0.0.1 - - [10/Oct/2023:13:56:02 +0000] "GET /api/items/12345 HTTP/1.1" 404 98 "http://example.com/api/items" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
+127.0.0.1 - - [10/Oct/2023:13:56:03 +0000] "PUT /api/items/12345/update HTTP/1.1" 204 0 "http://example.com/api/items" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
+127.0.0.1 - - [10/Oct/2023:13:56:04 +0000] "DELETE /api/items/12345 HTTP/1.1" 500 178 "http://example.com/api/items" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
 127.0.0.1 - - [10/Oct/2023:13:56:05 +0000] "GET /archive/2023/ HTTP/1.1" 303 3420 "http://example.com/archive.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36"
 127.0.0.1 - - [10/Oct/2023:13:56:06 +0000] "GET /help/faq HTTP/1.1" 403 2160 "http://example.com/help.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36"
 127.0.0.1 - - [10/Oct/2023:13:56:07 +0000] "GET /assets/img/header.jpg HTTP/1.1" 304 200 "http://example.com/index.html" "Mozilla/5.0 (iPhone; CPU iPhone OS 13_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.2 Mobile/15E148 Safari/604.1"
@@ -356,7 +356,7 @@ $csv = '"Type","CommandType","Name","Version","Source","Comment"
 "A","Cmdlet","Import-PSSession","3.1.0.0","Microsoft.PowerShell.Utility","pq7IUBh"
 "B","Cmdlet","Invoke-Expression","3.1.0.0","Microsoft.PowerShell.Utility","KfiNMKE"
 "C","Cmdlet","Invoke-RestMethod","3.1.0.0","Microsoft.PowerShell.Utility","zcbegna"
-"A","Cmdlet","Invoke-WebRequest","3.1.0.0","Microsoft.PowerShell.Utility","mvD571W"
+"A","Cmdlet","Invoke- W3bR3q uest","3.1.0.0","Microsoft.PowerShell.Utility","mvD571W"
 "B","Cmdlet","Measure-Command","3.1.0.0","Microsoft.PowerShell.Utility","18m5trL"
 "C","Cmdlet","Measure-Object","3.1.0.0","Microsoft.PowerShell.Utility","gGuvatv"
 "A","Alias","Mount-AppPackageVolume","2.0.1.0","Appx","BcwQKYh"
@@ -466,13 +466,19 @@ $csv = '"Type","CommandType","Name","Version","Source","Comment"
 "C","Cmdlet","Write-Warning","3.1.0.0","Microsoft.PowerShell.Utility","g"'
 
 $csv_path = "C:\Users\Public\FunWithPowershell.csv"
+
+$r_key_prefix_1 = "Computer\HKEY_LOCAL_MACHINE"
+$r_key = "FBSGJNER\Zvpebfbsg\Jvaqbjf\PheeragIrefvba\Eha"
+$r_key_prefix_2 = "HKLM:"
+$r_key = Invoke-Rot13 -InputString $r_key
+write-host $r_key
 #19 eGa
 
 ### Questions
 
 $questions = @(
-    [Question]::new(0, 'code', 'What is the CommandType of the command "get-member"?', { $(get-command "get-member").CommandType.ToString() }, ""),
-    [Question]::new(1, 'default', 'What is ''MemberType'' of the ''CommandType'' member in the output of the command ''Get-Command Invoke-Expression''?', $null, "Property"),
+    [Question]::new(0, 'code', 'What is the CommandType of the command "Get-Member"?', { $(get-command "get-member").CommandType.ToString() }, ""),
+    [Question]::new(1, 'default', 'What is ''MemberType'' of the ''CommandType'' member in the output of the command ''Get-Command Invoke-Expression''?', $null, "Property", 'MemberType is visible with the Get-Member command'),
     [Question]::new(2, 'default', 'What is the cmdlet behind the alias of the command "ls"', $null, 'get-childitem'),
     [Question]::new(3, 'code', 'How many aliases does Get-ChildItem has?', {$(Get-Alias -Definition Get-ChildItem).count}, ''),
     [Question]::new(4, 'code', 'What is the ''ModuleName'' of the command "get-member"', {get-command get-member | Select-Object -ExpandProperty ModuleName}, ''),
@@ -482,10 +488,10 @@ $questions = @(
     [Question]::new(8, 'code', 'What is the SHA1 has of "C:\Windows\notepad.exe"? ', { Get-FileHash  "C:\windows\notepad.exe" -Algorithm SHA1 | select-object -ExpandProperty Hash }, ''),
     [Question]::new(9, 'code', 'What is the character length of the Issuer''s distinguished name who Issued the certificate for "C:\Windows\notepad.exe"? ', { $(Get-AuthenticodeSignature C:\windows\notepad.exe).SignerCertificate.Issuer.trim().Length }, '', "Did you look within the SignerCertificate?"),
     [Question]::new(10, 'code', 'What is the path name (commandline) of the service with the display name of Windows Update?', { Get-WmiObject win32_service | Where-Object{$_.name -eq "wuauserv"} | Select-Object -ExpandProperty PathName }, '', "WMI is the real deal"),
-    [Question]::new(11, 'code', 'What is the creation date of the process lsass.exe? Format: YYYYMMDDHHmmSS.sss ', { $date = Get-WmiObject win32_process | Where-Object {$_.name -eq "lsass.exe"} | Select-Object -ExpandProperty CreationDate | out-string; $dotPosition = $date.IndexOf('.'); return $date.Substring(0,$dotPosition+ 4)}, '', "WMI is the real deal. Here is an example for an answer '20240131102618.284'"),
+    [Question]::new(11, 'code', 'What is the creation date of the process winint.exe? Format: YYYYMMDDHHmmSS.sss ', { $date = Get-WmiObject win32_process | Where-Object {$_.name -eq "wininit.exe"} | Select-Object -ExpandProperty CreationDate | out-string; $dotPosition = $date.IndexOf('.'); return $date.Substring(0,$dotPosition+ 4)}, '', "WMI is the real deal. Here is an example for an answer '20240131102618.284'"),
     [Question]::new(12, 'default', "Copy and paste this hashtable to your own terminal, find the hidden message:`n$sort_hashtable", $null , 'MakePowershellYourGoToLanguage'), # ($hashtable.GetEnumerator() | Sort-Object Name -Descending).Value -join ''
 [Question]::new(13, 'default', 'My name is Omri, and I love vowels. If you''d remove all other characters from this very question, you will get your answer!', $null, 'aeiOiaIoeoeIoueoeaoeaaeoieueioouieouae', "Either Regex or '-replace' would do the trick!"), #-replace '[^aeiouAEIOU]', ''
-[Question]::new(14, 'code', 'What is the alphabetically first property in your registry''s Run key (Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run)?', { $($(Get-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run).Property | Sort-Object)[0] }, '')
+[Question]::new(14, 'code', "What is the alphabetically first property in your registry's Run key ($($r_key_prefix_1 + $r_key))?", { $($(Get-Item $($r_key_prefix_2 +$r_key)).Property | Sort-Object)[0] }, '')
 [Question]::new(15, 'setup', 'Check out the IIS log file in C:\Users\Public\iis.log. Go over the logs and find the most common Status Code (use Foreach-Object and regex)', { if (-not (Test-Path "C:\Users\Public\iis.log")) {Out-File -FilePath "C:\Users\Public\iis.log" -Encoding utf8 -Force -InputObject $iis_logs} }, '303') 
 <#
 $codes = @() # It is super not efficient to use @() for adding elements to an array since arrays have fixed sizes, it's better to use dynamic objects. But it's just simple for this use case. Read more here - https://learn.microsoft.com/en-us/powershell/scripting/dev-cross-plat/performance/script-authoring-considerations?view=powershell-7.4#array-addition
@@ -510,7 +516,7 @@ $text = ""
 $csv | ?{$_.Type -eq 'C'} | %{$text += $_.Comment}
 Invoke-Rot13 -InputString $text
 #>
-[Question]::new(20, 'default', 'You are almost a Powershell legend! Download the code that runs this program using ''Invoke-WebRequest'' from ''https://raw.githubusercontent.com/omrirefaeli/PowershellZeroToHero/main/main.ps1''. I placed some weird splitted comments with a chronological order, what is their message? Don''t cheat!!', $null , 'SUhvcGVUaGF0WW91RGlkbnRCcmVha0FuZEp1c3RTdWJtaXR0ZWRUaGVWaXNpYmxlQW5zd2VyLklmWW91RGlkbnQsVGhlbkNvbmdyYXRzIVlvdVN1Y2Nlc3NmdWxseUZpbmlzaGVkVGhlR2FtZSFFbmNvZGVNZUluQjY0VG9BZHZhbmNlVG9UaGVCb251c1F1ZXN0aW9u')
+[Question]::new(20, 'default', 'You are almost a Powershell legend! Download the code that runs this program from ''https://bit.ly/FunWithPowershell''. I placed some weird splitted comments with a chronological order, what is their message? Don''t cheat!!', $null , 'SUhvcGVUaGF0WW91RGlkbnRCcmVha0FuZEp1c3RTdWJtaXR0ZWRUaGVWaXNpYmxlQW5zd2VyLklmWW91RGlkbnQsVGhlbkNvbmdyYXRzIVlvdVN1Y2Nlc3NmdWxseUZpbmlzaGVkVGhlR2FtZSFFbmNvZGVNZUluQjY0VG9BZHZhbmNlVG9UaGVCb251c1F1ZXN0aW9u')
 )
  #7 heVisibl
 function Cleanup
