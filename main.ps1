@@ -123,7 +123,7 @@ If for some reason you would still prefer to use CMD commands in this exercise, 
 4. As the game continues, try to keep a record of your answers for each question in case you accidentally exit the terminal.
 
 5. The questions are tailored to the system that runs the program. A good approach would be to create a Powershell ISE session on the same machine that runs this program, then press Ctrl+R to be able to run scripts and even debug quickly. You might need to set the Execution Policy to Bypass to be able to run scripts.
-There is no need to spin up a VM for this game, EXCEPT for the bonus question! You should NOT run the bonus question on your machine (don''t worry it will not happen automatically)
+Nothing malicious is running as part of this exercise so besides the phishy compilation (if you are running the executable), you shouldn''t worry from being flagged. EXCEPT for the bonus questions! You should NOT run or investigate the bonus questions on your machine! (don''t worry it will not happen automatically).
 
 6. In case you struggle with a question, especially the first ones, there are some hints to guide you. 
 If you are experiencing technical difficulties as a result that I tried to not spend too much time on creating this game then don''t waste your time and let me know.
@@ -477,22 +477,23 @@ write-host $r_key
 ### Questions
 
 $questions = @(
-    [Question]::new(0, 'code', 'What is the CommandType of the command "Get-Member"?', { $(get-command "get-member").CommandType.ToString() }, ""),
-    [Question]::new(1, 'default', 'What is ''MemberType'' of the ''CommandType'' member in the output of the command ''Get-Command Invoke-Expression''?', $null, "Property", 'MemberType is visible with the Get-Member command'),
-    [Question]::new(2, 'default', 'What is the cmdlet behind the alias of the command "ls"', $null, 'get-childitem'),
-    [Question]::new(3, 'code', 'How many aliases does Get-ChildItem has?', {$(Get-Alias -Definition Get-ChildItem).count}, ''),
-    [Question]::new(4, 'code', 'What is the ''ModuleName'' of the command "get-member"', {get-command get-member | Select-Object -ExpandProperty ModuleName}, ''),
-    [Question]::new(5, 'code', 'How many available commands in your machine has "Microsoft.PowerShell.Utility" as ther ModuleName (No Aliases!)?', { $(Get-command | Where-Object{$_.ModuleName -eq "Microsoft.PowerShell.Utility"}).Count }, ""),
-    [Question]::new(6, 'default', 'What is the type of the output to the command "Get-Help cat" ', $null , 'PSCustomObject'), #{ $(get-help cat ).gettype().name }
-    [Question]::new(7, 'code', 'What is the 77th char of the output to the command "Get-Help cat -full" ', { $(get-help cat -full | out-string)[77] }, ''),
-    [Question]::new(8, 'code', 'What is the SHA1 has of "C:\Windows\notepad.exe"? ', { Get-FileHash  "C:\windows\notepad.exe" -Algorithm SHA1 | select-object -ExpandProperty Hash }, ''),
-    [Question]::new(9, 'code', 'What is the character length of the Issuer''s distinguished name who Issued the certificate for "C:\Windows\notepad.exe"? ', { $(Get-AuthenticodeSignature C:\windows\notepad.exe).SignerCertificate.Issuer.trim().Length }, '', "Did you look within the SignerCertificate?"),
-    [Question]::new(10, 'code', 'What is the path name (commandline) of the service with the display name of Windows Update?', { Get-WmiObject win32_service | Where-Object{$_.name -eq "wuauserv"} | Select-Object -ExpandProperty PathName }, '', "WMI is the real deal"),
-    [Question]::new(11, 'code', 'What is the creation date of the process winint.exe? Format: YYYYMMDDHHmmSS.sss ', { $date = Get-WmiObject win32_process | Where-Object {$_.name -eq "wininit.exe"} | Select-Object -ExpandProperty CreationDate | out-string; $dotPosition = $date.IndexOf('.'); return $date.Substring(0,$dotPosition+ 4)}, '', "WMI is the real deal. Here is an example for an answer '20240131102618.284'"),
-    [Question]::new(12, 'default', "Copy and paste this hashtable to your own terminal, find the hidden message:`n$sort_hashtable", $null , 'MakePowershellYourGoToLanguage'), # ($hashtable.GetEnumerator() | Sort-Object Name -Descending).Value -join ''
-[Question]::new(13, 'default', 'My name is Omri, and I love vowels. If you''d remove all other characters from this very question, you will get your answer!', $null, 'aeiOiaIoeoeIoueoeaoeaaeoieueioouieouae', "Either Regex or '-replace' would do the trick!"), #-replace '[^aeiouAEIOU]', ''
-[Question]::new(14, 'code', "What is the alphabetically first property in your registry's Run key ($($r_key_prefix_1 + $r_key))?", { $($(Get-Item $($r_key_prefix_2 +$r_key)).Property | Sort-Object)[0] }, '')
-[Question]::new(15, 'setup', 'Check out the IIS log file in C:\Users\Public\iis.log. Go over the logs and find the most common Status Code (use Foreach-Object and regex)', { if (-not (Test-Path "C:\Users\Public\iis.log")) {Out-File -FilePath "C:\Users\Public\iis.log" -Encoding utf8 -Force -InputObject $iis_logs} }, '303') 
+    [Question]::new(0, 'code', "Demo Question:`nWhat is the Process ID of the lsass.exe process? ask for a hint to reveal how to get the answer", { $(Get-Process lsass).Id.ToString() }, "",'The answer is $(Get-Process lsass).Id.ToString()'),
+    [Question]::new(1, 'code', 'What is the CommandType of the command "Get-Member"?', { $(get-command "get-member").CommandType.ToString() }, "To get information about a command, use Get-Command"),
+    [Question]::new(2, 'default', 'What is ''MemberType'' of the ''CommandType'' member in the output of the command ''Get-Command Invoke-Expression''?', $null, "Property", 'MemberType is visible with the Get-Member command'),
+    [Question]::new(3, 'default', 'What is the cmdlet behind the alias of the command "ls"', $null, 'get-childitem'),
+    [Question]::new(4, 'code', 'How many aliases does Get-ChildItem has?', {$(Get-Alias -Definition Get-ChildItem).count}, ''),
+    [Question]::new(5, 'code', 'What is the ''ModuleName'' of the command "get-member"', {get-command get-member | Select-Object -ExpandProperty ModuleName}, 'Sometimes Powershell outputs are not fully visible. Piping `| Select *` reveals the rest or the properties.'),
+    [Question]::new(6, 'code', 'How many available commands in your machine has "Microsoft.PowerShell.Utility" as ther ModuleName (No Aliases!)?', { $(Get-command | Where-Object{$_.ModuleName -eq "Microsoft.PowerShell.Utility"}).Count }, "Where-object will help"),
+    [Question]::new(7, 'default', 'What is the type of the output to the command "Get-Help cat" ', $null , 'PSCustomObject', 'Wrapping output with $(<Command>) can make your life easier'), #{ $(get-help cat ).gettype().name }
+    [Question]::new(8, 'code', 'What is the 77th char of the output to the command "Get-Help cat -full" ', { $(get-help cat -full | out-string)[77] }, '', 'First you need to convert to string'),
+    [Question]::new(9, 'code', 'What is the SHA1 has of "C:\Windows\notepad.exe"? ', { Get-FileHash  "C:\windows\notepad.exe" -Algorithm SHA1 | select-object -ExpandProperty Hash }, ''),
+    [Question]::new(10, 'code', 'What is the character length of the Issuer''s distinguished name who Issued the certificate for "C:\Windows\notepad.exe"? ', { $(Get-AuthenticodeSignature C:\windows\notepad.exe).SignerCertificate.Issuer.trim().Length }, '', "Did you look within the SignerCertificate?"),
+    [Question]::new(11, 'code', 'What is the path name (commandline) of the service with the display name of Windows Update?', { Get-WmiObject win32_service | Where-Object{$_.name -eq "wuauserv"} | Select-Object -ExpandProperty PathName }, '', "WMI is the real deal"),
+    [Question]::new(12, 'code', 'What is the creation date of the process winint.exe? Format: YYYYMMDDHHmmSS.sss ', { $date = Get-WmiObject win32_process | Where-Object {$_.name -eq "wininit.exe"} | Select-Object -ExpandProperty CreationDate | out-string; $dotPosition = $date.IndexOf('.'); return $date.Substring(0,$dotPosition+ 4)}, '', "WMI is the real deal. Here is an example for an answer '20240131102618.284'"),
+    [Question]::new(13, 'default', "Copy and paste this hashtable to your own terminal, find the hidden message:`n$sort_hashtable", $null , 'MakePowershellYourGoToLanguage'), # ($hashtable.GetEnumerator() | Sort-Object Name -Descending).Value -join ''
+[Question]::new(14, 'default', 'My name is Omri, and I love vowels. If you''d remove all other characters from this very question, you will get your answer!', $null, 'aeiOiaIoeoeIoueoeaoeaaeoieueioouieouae', "Either Regex or '-replace' would do the trick!"), #-replace '[^aeiouAEIOU]', ''
+[Question]::new(15, 'code', "What is the alphabetically first property in your registry's Run key ($($r_key_prefix_1 + $r_key))?", { $($(Get-Item $($r_key_prefix_2 +$r_key)).Property | Sort-Object)[0] }, '')
+[Question]::new(16, 'setup', 'Check out the IIS log file in C:\Users\Public\iis.log. Go over the logs and find the most common Status Code (use Foreach-Object and regex)', { if (-not (Test-Path "C:\Users\Public\iis.log")) {Out-File -FilePath "C:\Users\Public\iis.log" -Encoding utf8 -Force -InputObject $iis_logs} }, '303') 
 <#
 $codes = @() # It is super not efficient to use @() for adding elements to an array since arrays have fixed sizes, it's better to use dynamic objects. But it's just simple for this use case. Read more here - https://learn.microsoft.com/en-us/powershell/scripting/dev-cross-plat/performance/script-authoring-considerations?view=powershell-7.4#array-addition
 $niis_logs | %{ #after splitting by lines and removing first line
@@ -501,36 +502,41 @@ $codes += $Matches[1]
 }
 $($code | Group-Object | Sort-Object -Descending Count).Name[0]
 #>
-[Question]::new(16, 'setup', 'Look at the registry key ''HKEY_CURRENT_USER\Powershell0toH''. What is the property with the most ''o''s?', { if( -not (Test-Path ($reg_key))) {new-item  $reg_key; foreach ($key in $reg_keys.Keys){  New-ItemProperty -Path $reg_key -Name $key -Value $reg_keys[$key] -PropertyType String  | out-null}} }, 'O9P0A4S')
-[Question]::new(17, 'setup', 'Under the ''C:\Users\Public\Powershell0toH'' folder you''ll find some encoded texts. One of those texts has a pattern of ''#[omri]{3,7};???#''. For example, ''#iormmm;b5g#''. The answer is the file name that this secret text is part of.', { if( -not (Test-Path ($b64_dir_path))) {new-item -ItemType Directory $b64_dir_path; Foreach ($i in 0..27){$name = Get-RandomString -length 7 -charSet $charSet;do{$text = Get-RandomString -length 500 -charSet $charSet_full}while($text -match $b64_pattern);if ($i -eq 7){$name = $b64_file_name; $text = $b64_file_text};$text = Convert-ToBase64($text); Out-File -FilePath "$b64_dir_path\$name.txt" -Encoding utf8 -InputObject $text}} }, $b64_file_name, 'The base64 encoding format is UTF8 yea? Combination of Get-childitem + Foreach + get-content and ''-match''')
-[Question]::new(18, 'setup', "Look for the CSV file '$($csv_path)' - Compare the entries with Type A and Type B, and find the one 'Comment' that exists only in one of those types. Hint available", { if( -not (Test-Path ($csv_path))) {$csv | out-file -FilePath $csv_path -Encoding utf8}}, 'wypOjA8', "Use Compare-Object, but if you want to find the absolute values, you might want to keep the lists unique")
+[Question]::new(17, 'setup', 'Look at the registry key ''HKEY_CURRENT_USER\Powershell0toH''. What is the property with the most ''o''s?', { if( -not (Test-Path ($reg_key))) {new-item  $reg_key; foreach ($key in $reg_keys.Keys){  New-ItemProperty -Path $reg_key -Name $key -Value $reg_keys[$key] -PropertyType String  | out-null}} }, 'O9P0A4S')
+[Question]::new(18, 'setup', 'Under the ''C:\Users\Public\Powershell0toH'' folder you''ll find some encoded texts. One of those texts has a pattern of ''#[omri]{3,7};???#''. For example, ''#iormmm;b5g#''. The answer is the file name that this secret text is part of.', { if( -not (Test-Path ($b64_dir_path))) {new-item -ItemType Directory $b64_dir_path; Foreach ($i in 0..27){$name = Get-RandomString -length 7 -charSet $charSet;do{$text = Get-RandomString -length 500 -charSet $charSet_full}while($text -match $b64_pattern);if ($i -eq 7){$name = $b64_file_name; $text = $b64_file_text};$text = Convert-ToBase64($text); Out-File -FilePath "$b64_dir_path\$name.txt" -Encoding utf8 -InputObject $text}} }, $b64_file_name, 'The base64 encoding format is UTF8 yea? Combination of Get-childitem + Foreach + get-content and ''-match''')
+[Question]::new(19, 'setup', "Look for the CSV file '$($csv_path)' - Compare the entries with Type A and Type B, and find the one 'Comment' that exists only in one of those types. Hint available", { if( -not (Test-Path ($csv_path))) {$csv | out-file -FilePath $csv_path -Encoding utf8}}, 'wypOjA8', "Use Compare-Object, but if you want to find the absolute values, you might want to keep the lists unique")
 <#
  $Csv = Import-Csv -Path "tst.csv" -Encoding UTF8 
  $a = $csv | ?{$_.Type -eq "A"}
  $b = $csv | ?{$_.Type -eq "B"}
  Compare-Object $($a  | select -ExpandProperty Comment | Sort-Object -Unique) $($b  | select -ExpandProperty Comment | Sort-Object -Unique)
 #>
-[Question]::new(19, 'default', 'In the same CSV, in the comments for the Type C entries, hides a very important message, encrypted by the most ''effective'' and the most ancient technique. What is the message? Hint available.', $null , 'ThisIsAVerylongTextThatINeedToFillUpButIfIAlreadyGotYourAttentionIWantToSayGoodJob!YouAreAlmostOver!ThereAreOnlyAFewQuestionsLeftAndYouGotIt!IHopeThatNowYouCanSafelySayThatYouFeelComfortableWritingCodeInPowerShellAndTheMostImportantThingisThatYouEnjoyed!ThisIsAVerylongTextThatINeedToFillUpButIfIAlreadyGotYourAttentionIWantToSayGoodJob!YouAreAlmostOver!ThereAreOnlyAFewQuestionsLeftAndYouGotIt!IHopeThatNowYouCanSafelySayThatYouFeelComfortableWritingCodeInPowerShellAndTheMost', 'The technique is the infamous Caesar Cipher (Rot13), concatonate the strings to find the full message.')
+[Question]::new(20, 'default', 'In the same CSV, in the comments for the Type C entries, hides a very important message, encrypted by the most ''effective'' and the most ancient technique. What is the message? Hint available.', $null , 'ThisIsAVerylongTextThatINeedToFillUpButIfIAlreadyGotYourAttentionIWantToSayGoodJob!YouAreAlmostOver!ThereAreOnlyAFewQuestionsLeftAndYouGotIt!IHopeThatNowYouCanSafelySayThatYouFeelComfortableWritingCodeInPowerShellAndTheMostImportantThingisThatYouEnjoyed!ThisIsAVerylongTextThatINeedToFillUpButIfIAlreadyGotYourAttentionIWantToSayGoodJob!YouAreAlmostOver!ThereAreOnlyAFewQuestionsLeftAndYouGotIt!IHopeThatNowYouCanSafelySayThatYouFeelComfortableWritingCodeInPowerShellAndTheMost', 'The technique is the infamous Caesar Cipher (Rot13), concatonate the strings to find the full message.')
 <#
 $text = ""
 $csv | ?{$_.Type -eq 'C'} | %{$text += $_.Comment}
 Invoke-Rot13 -InputString $text
 #>
-[Question]::new(20, 'default', 'You are almost a Powershell legend! Download the code that runs this program from ''https://bit.ly/FunWithPowershell''. I placed some weird splitted comments with a chronological order, what is their message? Don''t cheat!!', $null , 'SUhvcGVUaGF0WW91RGlkbnRCcmVha0FuZEp1c3RTdWJtaXR0ZWRUaGVWaXNpYmxlQW5zd2VyLklmWW91RGlkbnQsVGhlbkNvbmdyYXRzIVlvdVN1Y2Nlc3NmdWxseUZpbmlzaGVkVGhlR2FtZSFFbmNvZGVNZUluQjY0VG9BZHZhbmNlVG9UaGVCb251c1F1ZXN0aW9u')
+[Question]::new(21, 'default', 'You are almost a Powershell legend! Download the code that runs this program using ''Invoke-WebRequest'' from ''https://raw.githubusercontent.com/omrirefaeli/PowershellZeroToHero/main/main.ps1''. I placed some weird splitted comments with a chronological order, what is their message? Don''t cheat!!', $null , 'SUhvcGVUaGF0WW91RGlkbnRCcmVha0FuZEp1c3RTdWJtaXR0ZWRUaGVWaXNpYmxlQW5zd2VyLklmWW91RGlkbnQsVGhlbkNvbmdyYXRzIVlvdVN1Y2Nlc3NmdWxseUZpbmlzaGVkVGhlR2FtZSFFbmNvZGVNZUluQjY0VG9BZHZhbmNlVG9UaGVCb251c1F1ZXN0aW9ucw==')
+[Question]::new(22, 'default', "You did it! You are now proficient enough to deal with anything coming your way with Powershell!`nTo get a bit more extreme, I have some bonus questions for you.. Put on the Incident Responsder hat and try some DFIR challenges as attackers love Powershell! (now you see why)`n####### IMPORTANT #######`n!!!!!To Solve The Bonus Questions You Need To Switch To A Virtual Machine!!!!`nAND ESPECIALLY DO NOT PASTE ANY CODE TO YOUR TERMINAL IN A CORP LAPTOP`nIf anything happens now it's your fault.
+Go to 'https://gist.githubusercontent.com/omrirefaeli/d30ea5e9c505781361ea5fb3e6dc8b10/raw/9d6f72fd1bae6fc4a4501172c2f66f677fc4daf7/0_Encoded_Powershell_C2' to view a real world encoded powershell command that reach out to a C2 server. What is the C2 IP? The answer is Base64 encoded with Unicode (UTF-16LE) character set.", $null , 'MQA0ADkALgAyADgALgA4ADEALgAxADkA')
+[Question]::new(23, 'default', "Again, some scary warnings.. `n####### IMPORTANT #######`n!!!!!To Solve The Bonus Questions You Need To Switch To A Virtual Machine!!!!`nAND ESPECIALLY DO NOT PASTE ANY CODE TO YOUR TERMINAL IN A CORP LAPTOP`nIf anything happens now it's your fault.
+Go to 'https://gist.githubusercontent.com/omrirefaeli/d30ea5e9c505781361ea5fb3e6dc8b10/raw/45e759596759dad182dd23a6b9f467cade3e65a3/1_Deobfuscation' to view a CTF obfuscated Powershell code. Deobfuscate to view the flag! The answer is Base64 encoded with Unicode (UTF-16LE) character set.", $null , 'ZgBsAGEAZwB7ADgAOQAyAGEAOAA5ADIAMQA1ADEANwBkAGMAZQBjAGYAOQAwADYAOAA1AGQANAA3ADgAYQBlAGQAZgA1AGUAMgB9AA==')
+# Answers and explanations to the bonus questions are in here https://gist.github.com/omrirefaeli/d30ea5e9c505781361ea5fb3e6dc8b10
 )
  #7 heVisibl
 function Cleanup
 {
-    # Question15
+    # Question16
     Remove-Item "C:\Users\Public\iis.log" -Force
 
-    # Question16
+    # Question17
     Remove-Item -Path $reg_key -Recurse -Force
 
-    # Question17
+    # Question18
     Remove-Item -Path $b64_dir_path -Recurse -Force #23 64ToAd
 
-    # Questions 18-19
+    # Questions 19-20
     Remove-Item -Path $csv_path -Force
 
 }
@@ -635,9 +641,9 @@ function Start-TutorialGame {
             $answersStatus[$currentQuestion.id] = 'Incorrect'
             }
         }
-    } while ($currentIndex -lt $questions.Length) #27 estion
+    } while ($currentIndex -lt $questions.Length) #27 estions
 
-    Write-Host "Game is completed! Review your answers:" -ForegroundColor Green
+    Write-Host "Game is completed! Great Job! Review your answers:" -ForegroundColor Green
     $answersStatus.GetEnumerator() | ForEach-Object { Write-Host "Question $($_.Key): $($_.Value)" }
 
     Write-host "Done.. Cleaning up..."

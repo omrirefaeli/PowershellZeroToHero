@@ -41,6 +41,6 @@ jobs:
 
       - name: Create Release
         run: |
-          gh release create ${{ github.ref_name }} ./FunWithPowershell.zip --title "Release ${{ github.ref_name }}" --notes "New release of FunWithPowershell"
+          gh release create ${{ github.ref_name }} ./FunWithPowershell.zip --title "Release ${{ github.ref_name }}" --notes "New release of FunWithPowershell. The zip is password protected with the password "infected" since AVs flag this executable as suspicious. If the players have problems with running the executable on a VM, just run with powershell.exe -f <main.ps1 path>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
