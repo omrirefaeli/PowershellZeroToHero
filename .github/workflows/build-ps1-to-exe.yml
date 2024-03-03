@@ -37,6 +37,7 @@ jobs:
           Write-host $($null -ne $exists)
           if ($null -ne $exists) {
             gh release delete ${{ github.ref_name }} -y
+            write-host "Deleted existing release"
           }
         shell: pwsh
         env:
