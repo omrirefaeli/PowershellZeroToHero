@@ -20,10 +20,6 @@ jobs:
         run: |
           Install-Module -Name ps2exe -Force -SkipPublisherCheck
           get-module
-      - name: test
-        run: |
-          get-module 
-          write-host "ps2exe installed"
 
       - name: Compile PowerShell Script to Executable
         run: |
@@ -31,7 +27,7 @@ jobs:
 
       - name: Zip the Executable with Password
         run: |
-          7z a funwithpowershell.zip .\FunWithPowershell.exe -p "infected"
+          7z a funwithpowershell.zip .\FunWithPowershell.exe -pinfected
         shell: pwsh
 
       - name: Create Release
