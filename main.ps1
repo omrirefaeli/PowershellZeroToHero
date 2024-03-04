@@ -471,7 +471,7 @@ $r_key_prefix_1 = "Computer\HKEY_LOCAL_MACHINE"
 $r_key = "FBSGJNER\Zvpebfbsg\Jvaqbjf\PheeragIrefvba\Eha"
 $r_key_prefix_2 = "HKLM:"
 $r_key = Invoke-Rot13 -InputString $r_key
-write-host $r_key
+
 #19 eGa
 
 ### Questions
@@ -487,7 +487,7 @@ $questions = @(
     [Question]::new(7, 'default', 'What is the type of the output to the command "Get-Help cat" ', $null , 'PSCustomObject', 'Wrapping output with $(<Command>) can make your life easier'), #{ $(get-help cat ).gettype().name }
     [Question]::new(8, 'code', 'What is the 77th char of the output to the command "Get-Help cat -full" ', { $(get-help cat -full | out-string)[77] }, '', 'First you need to convert to string'),
     [Question]::new(9, 'code', 'What is the SHA1 has of "C:\Windows\notepad.exe"? ', { Get-FileHash  "C:\windows\notepad.exe" -Algorithm SHA1 | select-object -ExpandProperty Hash }, ''),
-    [Question]::new(10, 'code', 'What is the character length of the Issuer''s distinguished name who Issued the certificate for "C:\Windows\notepad.exe"? ', { $(Get-AuthenticodeSignature C:\windows\notepad.exe).SignerCertificate.Issuer.trim().Length }, '', "Did you look within the SignerCertificate?"),
+    [Question]::new(10, 'code', 'What is the character length of the Issuer''s distinguished name who Issued the certificate for "C:\windows\system32\ntoskrnl.exe"? ', { $(Get-AuthenticodeSignature "C:\windows\system32\ntoskrnl.exe").SignerCertificate.Issuer.trim().Length }, '', "Did you look within the SignerCertificate?"),
     [Question]::new(11, 'code', 'What is the path name (commandline) of the service with the display name of Windows Update?', { Get-WmiObject win32_service | Where-Object{$_.name -eq "wuauserv"} | Select-Object -ExpandProperty PathName }, '', "WMI is the real deal"),
     [Question]::new(12, 'code', 'What is the creation date of the process winint.exe? Format: YYYYMMDDHHmmSS.sss ', { $date = Get-WmiObject win32_process | Where-Object {$_.name -eq "wininit.exe"} | Select-Object -ExpandProperty CreationDate | out-string; $dotPosition = $date.IndexOf('.'); return $date.Substring(0,$dotPosition+ 4)}, '', "WMI is the real deal. Here is an example for an answer '20240131102618.284'"),
     [Question]::new(13, 'default', "Copy and paste this hashtable to your own terminal, find the hidden message:`n$sort_hashtable", $null , 'MakePowershellYourGoToLanguage'), # ($hashtable.GetEnumerator() | Sort-Object Name -Descending).Value -join ''
