@@ -482,7 +482,7 @@ $questions = @(
     [Question]::new(2, 'default', 'What is ''MemberType'' of the ''CommandType'' member in the output of the command ''Get-Command Invoke-Expression''?', $null, "Property", 'MemberType is visible with the Get-Member command'),
     [Question]::new(3, 'default', 'What is the cmdlet behind the alias of the command "ls"', $null, 'get-childitem'),
     [Question]::new(4, 'code', 'How many aliases does Get-ChildItem has?', {$(Get-Alias -Definition Get-ChildItem).count}, ''),
-    [Question]::new(5, 'code', 'What is the ''ModuleName'' of the command "get-member"', {get-command get-member | Select-Object -ExpandProperty ModuleName}, 'Sometimes Powershell outputs are not fully visible. Piping `| Select *` reveals the rest or the properties.'),
+    [Question]::new(5, 'code', 'What is the ''ModuleName'' of the command "get-member"', {get-command get-member | Select-Object -ExpandProperty ModuleName}, 'Sometimes Powershell outputs are not fully visible. Piping `| Select *` reveals the rest of the properties.'),
     [Question]::new(6, 'code', 'How many available commands in your machine has "Microsoft.PowerShell.Utility" as ther ModuleName (No Aliases!)?', { $(Get-command | Where-Object{$_.ModuleName -eq "Microsoft.PowerShell.Utility"}).Count }, "Where-object will help"),
     [Question]::new(7, 'default', 'What is the type of the output to the command "Get-Help cat" ', $null , 'PSCustomObject', 'Wrapping output with $(<Command>) can make your life easier'), #{ $(get-help cat ).gettype().name }
     [Question]::new(8, 'code', 'What is the 77th char of the output to the command "Get-Help cat -full" ', { $(get-help cat -full | out-string)[77] }, '', 'First you need to convert to string'),
