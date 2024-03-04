@@ -26,7 +26,7 @@ jobs:
 
       - name: Zip the Executable with Password
         run: |
-          7z a funwithpowershell.zip .\FunWithPowershell.exe -pinfected
+          7z a FunWithPowershell.zip .\FunWithPowershell.exe -pinfected
         shell: pwsh
 
       - name: Delete existing release if it exists
