@@ -479,7 +479,7 @@ $r_key = Invoke-Rot13 -InputString $r_key
 $questions = @(
     [Question]::new(0, 'code', "Demo Question:`nWhat is the Process ID of the lsass.exe process? ask for a hint to reveal how to get the answer", { $(Get-Process lsass).Id.ToString() }, "",'The answer is `$(Get-Process lsass).Id.ToString()`'),
     [Question]::new(1, 'code', 'What is the CommandType of the command "Get-Member"?', { $(get-command "get-member").CommandType.ToString() }, "To get information about a command, use Get-Command"),
-    [Question]::new(2, 'default', 'What is ''MemberType'' of the ''CommandType'' member in the output of the command ''Get-Command Invoke-Expression''?', $null, "Property", 'MemberType is visible with the Get-Member command'),
+    [Question]::new(2, 'default', 'What is ''MemberType'' of the ''CommandType'' member in the output of the command ''Get-Command Invoke-Expression''?', $null, "Property", 'MemberType is visible with the Get-Member command. Here is an example on how to use Get-Member `Get-Process -Name "chrome" | Get-Member`'),
     [Question]::new(3, 'default', 'What is the cmdlet behind the alias of the command "ls"', $null, 'get-childitem'),
     [Question]::new(4, 'code', 'How many aliases does Get-ChildItem has?', {$(Get-Alias -Definition Get-ChildItem).count}, ''),
     [Question]::new(5, 'code', 'What is the ''ModuleName'' of the command "get-member"', {get-command get-member | Select-Object -ExpandProperty ModuleName}, 'Sometimes Powershell outputs are not fully visible. Piping `| Select *` reveals the rest of the properties.'),
