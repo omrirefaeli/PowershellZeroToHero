@@ -22,7 +22,7 @@ jobs:
 
       - name: Compile PowerShell Script to Executable
         run: |
-          Invoke-PS2EXE .\main.ps1 .\FunWithPowershell.exe -title FunWithPowershell -copyright "Omri Refaeli" -description "Fun With Powershell"
+          Invoke-PS2EXE .\main.ps1 .\FunWithPowershell.exe -title FunWithPowershell -copyright "Omri Refaeli" -description "Fun With Powershell" -trademark "Omri Refaeli" -company "Omri Refaeli" -version 1.0
 
       - name: Zip the Executable with Password
         run: |
