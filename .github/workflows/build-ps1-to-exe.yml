@@ -31,14 +31,14 @@ jobs:
 
       - name: Delete existing release if it exists
         run: |
-          try {
-            $exists = gh release view ${{ github.ref_name }} --json tagName -q .tagName
-            Write-Host "Release exists. Attempting to delete..."
+          $exists = gh release view ${{ github.ref_name }} --json tagName -q .tagName
+          if ($null -ne $exists) {
             gh release delete ${{ github.ref_name }} -y
-            Write-Host "Deleted existing release"
-          } catch {
-            Write-Host "Release not found or another error occurred."
-            Write-Host "Error: $($_.Exception.Message)"
+            write-host "Deleted existing release"
+          }
+          else
+          {
+            exit 0
           }
         shell: pwsh
         env:
