@@ -571,7 +571,7 @@ function Start-TutorialGame {
             $InsecureString = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($bstr)
             if ($InsecureString -eq "omri!")
             {
-                $num = Read-Host "How many questions do you want to reveal? (ID of last question + 1)"
+                $num = Read-Host "How many questions do you want to reveal? (ID of last question + 1, or 'all' for all of the answers)"
                 if ($num -eq "all")
                 {$num = $questions.Count }
                 for ($i =0;$i -lt $num; $i++) {
