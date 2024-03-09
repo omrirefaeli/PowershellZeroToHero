@@ -3,7 +3,7 @@
 This is a terminal educational game to learn Powershell through hands-on porblem solving to teach the nuances of the code language. Can be played individually or as a team learning activity with one instructor.
 
 ## About the game
-The code is written in Powershell. The player is asked with questions that are tailored to the system that runs the code. To find the answers, the player would need to utilize Powershell concepts on his/her own that gets harder as the game progresses.
+The code is written in Powershell. The player is asked with questions that are tailored to the system that runs the code. To find the answers, the player would need to utilize new Powershell concepts each time on his/her own that gets harder as the game progresses.
 
 ## How to run
 
