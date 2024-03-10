@@ -7,7 +7,7 @@ The code is written in PowerShell. The player is asked with questions that are t
 
 ## How to run
 
-The PowerShell code is compiled into an executable using [PS2EXE](https://github.com/MScholtes/PS2EXE), making it easy for players to run the game as a standalone black-box application. The executable is zipped and can be donwloaded from the **Releases** section, using the password of `infected`. Some AVs may flag the executable as suspicious because of the compilation mehtod. 
+The PowerShell code is compiled into an executable using [PS2EXE](https://github.com/MScholtes/PS2EXE), making it easy for players to run the game as a standalone black-box application. The executable is zipped and can be downloaded from the **Releases** section, using the password of `infected`. Some AVs may flag the executable as suspicious because of the compilation mehtod. 
 Therefore it is recommended to run it on a VM. <br>If using a VM is a problem, the game can also be run by executing `main.ps1` with `powershell.exe -f main.ps1` on any system. You might need to change the execution policy first `Set-ExecutionPolicy Bypass` on an administrator PowerShell terminal. The actual game instructions are inline.
 
 ## Instructions for the instructor
