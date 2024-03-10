@@ -22,7 +22,7 @@ These are great in case someone accidently exits the terminal for instance, or f
 
 ## About the questions
 
-The questions starts easy and gets harder with time. Each question is meant to cover a different aspect of the language. Of course it is not a comprehensive guide to learn everything about PowerShell, but the ones who finish it will probably be able to take on most scripting tasks. I haven't covered efficiency with the language nor OOP stuff, but it should be more than enough for a fun game :) 
+The questions start easy and get harder with time. Each question is meant to cover a different aspect of the language. Of course it is not a comprehensive guide to learn everything about PowerShell, but the ones who finish it will probably be able to take on most scripting tasks. I haven't covered efficiency with the language nor OOP stuff, but it should be more than enough for a fun game :) 
 
 The questions are written in a way that it is easy to understand, easy to see what is the solution for each question (in the last question the particiapants are redirected to the source code so they can take a look), and also easy to add/remove question if desired. 
 I think this amount of questions is more than enough for a fun exercise, but feel free to add questions if you see it fit.
