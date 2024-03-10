@@ -3,7 +3,7 @@
 This is a terminal educational game to learn PowerShell through hands-on problem solving to teach the nuances of the code language. It's suitable for individual learning or as a team activity with one instructor.
 
 ## About the game
-The code is written in PowerShell. The player is asked with questions that are tailored to the system that runs the code. To find the answers, the player would need to utilize new PowerShell concepts each time on his/her own that gets harder as the game progresses. PowerShell Get-Help and the internet are legitimate tools. 
+The code is written in PowerShell. The player is asked with questions that are tailored to the system that runs the code. To find the answers, the player would need to utilize new PowerShell concepts each time on his/her own that gets harder as the game progresses. PowerShell's Get-Help and the internet are legitimate tools. 
 <br>For those unfamiliar with PowerShell, completing the game (excluding bonus questions) should take about 3-5 hours. More advanced users may finish it quicker, though the bonus questions will provide additional challenges ;)
 
 ## How to run
