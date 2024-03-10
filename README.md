@@ -1,4 +1,4 @@
-# PowerShell exercise to take you from zero to hero
+# Fun With Powershell: From Zero to Hero
 
 This is a terminal educational game to learn PowerShell through hands-on problem solving to teach the nuances of the code language. It's suitable for individual learning or as a team activity with one instructor.
 
